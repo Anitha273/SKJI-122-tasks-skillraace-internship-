@@ -1,25 +1,32 @@
-import java.io.*;
-import java.util.*;
-import java.lang.*;
-class Main
-{
-public static void main(String args[])
-{
-Scanner sc=new Scanner(System.in);
-int a=sc.nextInt();
-int a1,a2,a3,a4,a5,a6,sum;
-a1=a/100;
-a=a%100;
-a2=a/50;
-a=a%50;
-a3=a/10;
-a=a%10;
-a4=a/5;
-a=a%5;
-a5=a/2;
-a=a%2;
-a6=a;
-sum=a1+a2+a3+a4+a5+a6;
-System.out.println(sum);
-}
+import java.util.Scanner;
+
+public class ChangeCalculator {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // Read the input amount N
+        int N = scanner.nextInt();
+        
+        // Denominations available
+        int[] denominations = {100, 50, 10, 5, 2, 1};
+        
+        // Variable to store the count of notes
+        int noteCount = 0;
+        
+        // Loop through each denomination
+        for (int denomination : denominations) {
+            if (N >= denomination) {
+                // Calculate the number of notes of the current denomination
+                noteCount += N / denomination;
+                // Reduce the amount by the equivalent value of the used notes
+                N = N % denomination;
+            }
+        }
+        
+        // Print the total count of notes
+        System.out.println(noteCount);
+        
+        // Close the scanner
+        scanner.close();
+    }
 }
